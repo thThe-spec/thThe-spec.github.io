@@ -1,0 +1,950 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Theodore Valentinus Bachri | Tech Portfolio</title>
+  <meta name="description" content="Portfolio of Theodore Valentinus Bachri - Tech Professional specializing in modern systems, security, and software development.">
+
+  <!-- Inter Font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg-primary: #0b0f19;
+      --bg-secondary: #111827;
+      --bg-tertiary: #1f2937;
+      --bg-card: rgba(17, 24, 39, 0.7);
+      --border: rgba(255, 255, 255, 0.08);
+      --border-hover: rgba(56, 189, 248, 0.3);
+      --text-main: #f3f4f6;
+      --text-muted: #9ca3af;
+      --text-dim: #6b7280;
+      --accent: #38bdf8;
+      --accent-glow: rgba(56, 189, 248, 0.15);
+      --accent-emerald: #34d399;
+      --font-mono: 'JetBrains Mono', monospace;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: var(--bg-primary);
+      color: var(--text-main);
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    /* Ambient background gradient glow */
+    .ambient-glow {
+      position: fixed;
+      top: -20%;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 70vw;
+      height: 60vh;
+      background: radial-gradient(circle, rgba(56, 189, 248, 0.08) 0%, rgba(11, 15, 25, 0) 70%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* Layout containers */
+    .container {
+      width: 100%;
+      max-width: 1080px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    section {
+      padding: 5rem 0;
+    }
+
+    /* Typography helpers */
+    .mono {
+      font-family: var(--font-mono);
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      padding: 0.35rem 0.75rem;
+      border-radius: 9999px;
+      font-size: 0.8rem;
+      font-weight: 500;
+      background: var(--bg-tertiary);
+      color: var(--accent);
+      border: 1px solid var(--border);
+    }
+
+    .status-dot {
+      width: 8px;
+      height: 8px;
+      background-color: var(--accent-emerald);
+      border-radius: 50%;
+      display: inline-block;
+      margin-right: 0.5rem;
+      box-shadow: 0 0 8px var(--accent-emerald);
+    }
+
+    /* Header & Navigation */
+    header {
+      position: sticky;
+      top: 0;
+      background: rgba(11, 15, 25, 0.85);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      z-index: 100;
+    }
+
+    .nav-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      height: 4.25rem;
+    }
+
+    .logo {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--text-main);
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .logo span {
+      color: var(--accent);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1.75rem;
+      align-items: center;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 0.925rem;
+      font-weight: 500;
+      transition: color 0.2s ease;
+    }
+
+    .nav-links a:hover {
+      color: var(--accent);
+    }
+
+    .nav-toggle {
+      display: none;
+      background: none;
+      border: 1px solid var(--border);
+      color: var(--text-main);
+      padding: 0.5rem;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+
+    /* Buttons */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      padding: 0.75rem 1.4rem;
+      border-radius: 8px;
+      font-size: 0.95rem;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.2s ease;
+      cursor: pointer;
+      border: none;
+    }
+
+    .btn-primary {
+      background: var(--text-main);
+      color: var(--bg-primary);
+    }
+
+    .btn-primary:hover {
+      background: #ffffff;
+      box-shadow: 0 0 20px rgba(255, 255, 255, 0.25);
+      transform: translateY(-1px);
+    }
+
+    .btn-secondary {
+      background: rgba(255, 255, 255, 0.05);
+      color: var(--text-main);
+      border: 1px solid var(--border);
+    }
+
+    .btn-secondary:hover {
+      background: rgba(255, 255, 255, 0.1);
+      border-color: var(--border-hover);
+      transform: translateY(-1px);
+    }
+
+    /* Hero Section */
+    .hero {
+      padding: 6rem 0 4rem;
+    }
+
+    .hero-pretitle {
+      display: inline-flex;
+      align-items: center;
+      margin-bottom: 1.25rem;
+    }
+
+    .hero h1 {
+      font-size: clamp(2.25rem, 5vw, 3.75rem);
+      font-weight: 800;
+      letter-spacing: -0.025em;
+      line-height: 1.15;
+      margin-bottom: 1.25rem;
+    }
+
+    .hero h1 .highlight {
+      background: linear-gradient(120deg, #38bdf8, #818cf8);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .hero-bio {
+      font-size: 1.15rem;
+      color: var(--text-muted);
+      max-width: 680px;
+      margin-bottom: 2rem;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      align-items: center;
+    }
+
+    .social-row {
+      display: flex;
+      gap: 1.25rem;
+      margin-top: 2.25rem;
+      align-items: center;
+    }
+
+    .social-link {
+      color: var(--text-muted);
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.9rem;
+      transition: color 0.2s ease;
+    }
+
+    .social-link:hover {
+      color: var(--accent);
+    }
+
+    .social-link svg {
+      width: 18px;
+      height: 18px;
+      fill: currentColor;
+    }
+
+    /* Section Headings */
+    .section-header {
+      margin-bottom: 3rem;
+    }
+
+    .section-tag {
+      color: var(--accent);
+      font-size: 0.85rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      display: block;
+      margin-bottom: 0.5rem;
+    }
+
+    .section-title {
+      font-size: 2rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+    }
+
+    .section-subtitle {
+      color: var(--text-muted);
+      margin-top: 0.5rem;
+      font-size: 1rem;
+    }
+
+    /* Skills Section */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .skill-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.75rem;
+      backdrop-filter: blur(8px);
+      transition: border-color 0.2s, transform 0.2s;
+    }
+
+    .skill-card:hover {
+      border-color: var(--border-hover);
+      transform: translateY(-2px);
+    }
+
+    .skill-card h3 {
+      font-size: 1.1rem;
+      font-weight: 600;
+      margin-bottom: 1.25rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .skill-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    .skill-chip {
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid var(--border);
+      padding: 0.35rem 0.7rem;
+      border-radius: 6px;
+      font-size: 0.825rem;
+      color: var(--text-muted);
+      transition: all 0.2s ease;
+    }
+
+    .skill-chip:hover {
+      color: var(--text-main);
+      border-color: var(--border-hover);
+      background: rgba(56, 189, 248, 0.06);
+    }
+
+    /* Projects / Case Studies Section */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 2rem;
+    }
+
+    .project-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 2rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      backdrop-filter: blur(8px);
+      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+      position: relative;
+    }
+
+    .project-card:hover {
+      border-color: var(--border-hover);
+      transform: translateY(-4px);
+      box-shadow: 0 16px 32px -8px rgba(0, 0, 0, 0.5);
+    }
+
+    .project-type {
+      font-size: 0.775rem;
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+    }
+
+    .project-title {
+      font-size: 1.35rem;
+      font-weight: 700;
+      margin-bottom: 0.75rem;
+      color: var(--text-main);
+    }
+
+    /* STAR / Problem-Action-Impact Box */
+    .project-details {
+      margin: 1.25rem 0;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+      font-size: 0.875rem;
+    }
+
+    .detail-item {
+      display: flex;
+      flex-direction: column;
+      gap: 0.25rem;
+      background: rgba(0, 0, 0, 0.2);
+      padding: 0.75rem 1rem;
+      border-radius: 8px;
+      border-left: 2px solid var(--border);
+    }
+
+    .detail-item.impact {
+      border-left-color: var(--accent-emerald);
+      background: rgba(52, 211, 153, 0.04);
+    }
+
+    .detail-label {
+      font-size: 0.75rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--text-dim);
+    }
+
+    .detail-item.impact .detail-label {
+      color: var(--accent-emerald);
+    }
+
+    .detail-text {
+      color: var(--text-muted);
+      line-height: 1.45;
+    }
+
+    .project-stack {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      margin-top: 1rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .project-links {
+      display: flex;
+      gap: 1rem;
+      align-items: center;
+      padding-top: 1rem;
+      border-top: 1px solid var(--border);
+    }
+
+    .link-action {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      font-size: 0.875rem;
+      font-weight: 500;
+      color: var(--text-main);
+      text-decoration: none;
+      transition: color 0.2s ease;
+    }
+
+    .link-action:hover {
+      color: var(--accent);
+    }
+
+    /* Timeline / Experience */
+    .timeline {
+      position: relative;
+      border-left: 1px solid var(--border);
+      margin-left: 0.5rem;
+      padding-left: 1.75rem;
+    }
+
+    .timeline-item {
+      position: relative;
+      margin-bottom: 2.5rem;
+    }
+
+    .timeline-item:last-child {
+      margin-bottom: 0;
+    }
+
+    .timeline-dot {
+      position: absolute;
+      left: -2.15rem;
+      top: 0.35rem;
+      width: 11px;
+      height: 11px;
+      border-radius: 50%;
+      background: var(--bg-primary);
+      border: 2px solid var(--accent);
+    }
+
+    .timeline-date {
+      font-size: 0.8rem;
+      color: var(--accent);
+      margin-bottom: 0.3rem;
+    }
+
+    .timeline-title {
+      font-size: 1.15rem;
+      font-weight: 600;
+      margin-bottom: 0.25rem;
+    }
+
+    .timeline-org {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .timeline-desc {
+      color: var(--text-muted);
+      font-size: 0.925rem;
+    }
+
+    /* Contact Card */
+    .contact-card {
+      background: linear-gradient(180deg, var(--bg-card) 0%, rgba(17, 24, 39, 0.4) 100%);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 3rem 2rem;
+      text-align: center;
+      max-width: 680px;
+      margin: 0 auto;
+    }
+
+    .contact-card h2 {
+      font-size: 2rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+    }
+
+    .contact-card p {
+      color: var(--text-muted);
+      margin-bottom: 2rem;
+      font-size: 1rem;
+    }
+
+    /* Footer */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 3rem 0;
+      color: var(--text-dim);
+      font-size: 0.875rem;
+      text-align: center;
+    }
+
+    .footer-content {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    /* Responsive Queries */
+    @media (max-width: 768px) {
+      .nav-toggle {
+        display: block;
+      }
+
+      .nav-links {
+        display: none;
+        position: absolute;
+        top: 4.25rem;
+        left: 0;
+        right: 0;
+        background: var(--bg-secondary);
+        flex-direction: column;
+        padding: 1.5rem;
+        border-bottom: 1px solid var(--border);
+        gap: 1.25rem;
+      }
+
+      .nav-links.active {
+        display: flex;
+      }
+
+      .hero {
+        padding: 4rem 0 3rem;
+      }
+
+      .projects-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .contact-card {
+        padding: 2rem 1.25rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="ambient-glow" aria-hidden="true"></div>
+
+  <!-- Navigation Header -->
+  <header>
+    <div class="container nav-container">
+      <a href="#" class="logo">
+        <span class="mono">&gt;</span> Theo.sh
+      </a>
+
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation menu">
+        <svg width="22" height="22" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+        </svg>
+      </button>
+
+      <ul class="nav-links" id="navMenu">
+        <li><a href="#about" class="nav-item">About</a></li>
+        <li><a href="#skills" class="nav-item">Skills</a></li>
+        <li><a href="#projects" class="nav-item">Projects</a></li>
+        <li><a href="#experience" class="nav-item">Experience</a></li>
+        <li><a href="#contact" class="nav-item">Contact</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <main>
+    <!-- Hero Section -->
+    <section class="hero" id="about">
+      <div class="container">
+        <div class="hero-pretitle">
+          <span class="badge">
+            <span class="status-dot"></span> Open to new opportunities
+          </span>
+        </div>
+
+        <h1>
+          Hi, I'm <span class="highlight">Theodore Valentinus Bachri</span><br>
+          <div style="font-size: 40px;">Cyber Security Enthusiast | CTF Enjoyer</div>
+        </h1>
+
+        <p class="hero-bio">
+          I am a Cyber Security Enthusiast passionate in exploring the latest trends in cybersecurity and participating in Capture The Flag (CTF) challenges.
+        </p>
+
+        <div class="hero-actions">
+          <a href="#projects" class="btn btn-primary">
+            View Case Studies
+            <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
+            </svg>
+          </a>
+          <a href="#contact" class="btn btn-secondary">Get in Touch</a>
+        </div>
+
+        <div class="social-row">
+          <!-- GitHub Link -->
+          <a href="https://github.com/thThe-spec" target="_blank" rel="noopener noreferrer" class="social-link" title="GitHub">
+            <svg viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+            GitHub
+          </a>
+
+          <!-- LinkedIn Link -->
+          <a href="https://linkedin.com/in/theodore-valentinus-bachri-5236b6325" target="_blank" rel="noopener noreferrer" class="social-link" title="LinkedIn">
+            <svg viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451c.979 0 1.778-.773 1.778-1.729V1.73C24 .774 23.205 0 22.222 0h.003z"/></svg>
+            LinkedIn
+          </a>
+
+          <!-- Email Link -->
+          <a href="mailto:your.fprui245@gmail.com" class="social-link" title="Email">
+            <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+            Email
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">Capabilities</span>
+          <h2 class="section-title">Core Competencies & Tools</h2>
+          <p class="section-subtitle">Categorized breakdown of technical proficiencies and hands-on toolsets.</p>
+        </div>
+
+        <div class="skills-grid">
+          <!-- Category 1 -->
+          <div class="skill-card">
+            <h3>
+              <svg width="20" height="20" fill="none" stroke="var(--accent)" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path></svg>
+              Penetration Testing & Security
+            </h3>
+            <div class="skill-tags">
+              <span class="skill-chip">Kali Linux</span>
+              <span class="skill-chip">BurpSuite</span>
+              <span class="skill-chip">Frida</span>
+              <span class="skill-chip">Threat Modelling</span>
+              <span class="skill-chip">Wireshark</span>
+              <span class="skill-chip">OWASP WSTG</span>
+              <span class="skill-chip">OWASP MASTG</span>
+              <span class="skill-chip">CVE Research & Analysis</span>
+            </div>
+          </div>
+
+          <!-- Category 2 -->
+          <div class="skill-card">
+            <h3>
+              <svg width="20" height="20" fill="none" stroke="var(--accent)" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path></svg>
+              Programming
+            </h3>
+            <div class="skill-tags">
+              <span class="skill-chip">Python</span>
+              <span class="skill-chip">Bash Scripting</span>
+              <span class="skill-chip">C</span>
+              <span class="skill-chip">PHP</span>
+              <span class="skill-chip">SQL</span>
+              <span class="skill-chip">Java</span>
+            </div>
+          </div>
+
+          <!-- Category 3 -->
+          <div class="skill-card">
+            <h3>
+              <svg width="20" height="20" fill="none" stroke="var(--accent)" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path></svg>
+              Monitoring & Troubleshooting
+            </h3>
+            <div class="skill-tags">
+              <span class="skill-chip">Zabbix</span>
+              <span class="skill-chip">Honeypot (Cowrie & Dionaea)</span>
+              <span class="skill-chip">Linux (Ubuntu)</span>
+              <span class="skill-chip">OS Troubleshooting & Analysis</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Featured Projects / Case Studies -->
+    <section id="projects">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">Case Studies</span>
+          <h2 class="section-title">Selected Projects</h2>
+          <p class="section-subtitle">Practical implementations formatted by problem, implementation, and measurable result.</p>
+        </div>
+
+        <div class="projects-grid">
+          <!-- Project 1 -->
+          <article class="project-card">
+            <div>
+              <span class="project-type">Web Application Penetration Testing</span>
+              <h3 class="project-title">Penetration Testing – Hack The Box: Guardian</h3>
+              
+              <div class="project-details">
+                <h4>Role: Penetration Tester (Team of 3)</h4>
+                <p style="font-size: 13px;">Executed initial reconnaissance, enumeration, and exploited IDOR/XSS vectors to retrieve internal credentials.</p>
+
+                <div class="detail-item impact">
+                  <span class="detail-label">Initial Access</span>
+                  <p class="detail-text">Chained multiple web vulnerabilities—leveraging IDOR to extract Gitea credentials, XSS for session hijacking (CVE-2025-22131), and CSRF paired with RFI to deploy a reverse shell.</p>
+                </div>
+                <div class="detail-item impact">
+                  <span class="detail-label">Lateral Movement</span>
+                  <p class="detail-text">Extracted hardcoded MySQL credentials from an internal Gitea repository to establish an SSH session as a privileged user.</p>
+                </div>
+                <div class="detail-item impact">
+                  <span class="detail-label">Privilege Escalation</span>
+                  <p class="detail-text">Exploited misconfigured sudo/user permissions and an execution flaw in safeapache2ctl to escalate privileges directly to root.</p>
+                </div>
+              </div>
+
+              <div class="project-stack">
+                <span class="skill-chip">Kali Linux</span>
+                <span class="skill-chip">Web Exploitation</span>
+                <span class="skill-chip">Bash</span>
+              </div>
+            </div>
+
+            <div class="project-links">
+              <a href="https://github.com/yourusername/project-repo" target="_blank" rel="noopener noreferrer" class="link-action">
+                View Write-up &rarr;
+              </a>
+            </div>
+          </article>
+
+          <!-- Project 2 -->
+          <article class="project-card">
+            <div>
+              <span class="project-type">Web Application Penetration Testing</span>
+              <h3 class="project-title">Penetration Testing – Hack The Box: CodePartTwo</h3>
+              
+              <div class="project-details">
+                <h4>Role: Penetration Tester, Report Writer (Team of 3)</h4>
+                <p style="font-size: 13px;">Executed initial reconnaissance, enumeration, and exploited the Js2py library to reverse shell.</p>
+
+                <div class="detail-item impact">
+                  <span class="detail-label">Initial Access</span>
+                  <p class="detail-text">Exploited a sandbox escape vulnerability in the Js2py library (CVE-2024-28397) to execute arbitrary code (RCE) and establish an interactive reverse shell.</p>
+                </div>
+                <div class="detail-item impact">
+                  <span class="detail-label">Lateral Movement</span>
+                  <p class="detail-text">Extracted cleartext credentials to authenticate via SSH and secure an interactive user shell.</p>
+                </div>
+                <div class="detail-item impact">
+                  <span class="detail-label">Privilege Escalation</span>
+                  <p class="detail-text">Modified and executed code through the privileged npbackup-cli binary to bypass restrictions and achieve root access.</p>
+                </div>
+              </div>
+
+              <div class="project-stack">
+                <span class="skill-chip">Kali Linux</span>
+                <span class="skill-chip">Web Exploitation</span>
+                <span class="skill-chip">Bash</span>
+              </div>
+            </div>
+
+            <div class="project-links">
+              <a href="https://github.com/yourusername/project-repo" target="_blank" rel="noopener noreferrer" class="link-action">
+                View Write-up &rarr;
+              </a>
+            </div>
+          </article>
+
+          <!-- Project 3 -->
+          <article class="project-card">
+            <div>
+              <span class="project-type">Infrastructure Monitoring</span>
+              <h3 class="project-title">Centralized Infrastructure Monitoring with Zabbix</h3>
+              <p style="font-size: 13px;">Designed and implemented an end-to-end centralized monitoring solution to ensure infrastructure reliability, performance, and uptime.</p>
+
+              <div class="project-details">
+                <div class="detail-item impact">
+                  <span class="detail-label">Zabbix Server Deployment</span>
+                  <p class="detail-text">Installed and configured Zabbix Server from scratch to act as the centralized monitoring hub.</p>
+                </div>
+                <div class="detail-item impact">
+                  <span class="detail-label">Deployment Efficiency</span>
+                  <p class="detail-text">Developed custom shell/bash scripts to streamline the installation and configuration of Zabbix Agents on various VMs via SSH.</p>
+                </div>
+                <div class="detail-item impact">
+                  <span class="detail-label">Host Management</span>
+                  <p class="detail-text">Managed and monitored the integrated hosts, ensuring reliable data collection and system health tracking.</p>
+                </div>
+              </div>
+
+              <div class="project-stack">
+                <span class="skill-chip">Bash</span>
+                <span class="skill-chip">Linux</span>
+                <span class="skill-chip">Zabbix</span>
+                <span class="skill-chip">Monitoring</span>
+              </div>
+            </div>
+
+            <div class="project-links">
+              <a href="https://github.com/thThe-spec/zabbix-agent-install" target="_blank" rel="noopener noreferrer" class="link-action">
+                View Script &rarr;
+              </a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Experience & Education -->
+    <section id="experience">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">Career History</span>
+          <h2 class="section-title">Experience & Education</h2>
+          <p class="section-subtitle">Summary of professional work, relevant training, and achievements.</p>
+        </div>
+
+        <div class="timeline">
+          <!-- Timeline Item 1 -->
+          <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-date mono">2024 — Present</div>
+            <h3 class="timeline-title">IT Support / Junior DevOps Specialist</h3>
+            <p class="timeline-org">Company or Organization Name</p>
+            <p class="timeline-desc">
+              Managing internal server reliability, maintaining Dockerized microservices, automating routine deployments, and conducting basic network security audits.
+            </p>
+          </div>
+
+          <!-- Timeline Item 2 -->
+          <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-date mono">2022 — 2024</div>
+            <h3 class="timeline-title">Freelance Tech Consultant & Developer</h3>
+            <p class="timeline-org">Self-employed</p>
+            <p class="timeline-desc">
+              Delivered tailored web applications, configured secure Linux hosting environments, and integrated third-party payment gateways for small business clients.
+            </p>
+          </div>
+
+          <!-- Timeline Item 3 -->
+          <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-date mono">2020 — 2024</div>
+            <h3 class="timeline-title">Bachelor of Science in Computer Science / Information Systems</h3>
+            <p class="timeline-org">Your University Name</p>
+            <p class="timeline-desc">
+              Graduated with focus on Computer Networks, Software Engineering, and Operating Systems. Active member of tech student organizations.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+      <div class="container">
+        <div class="contact-card">
+          <h2>Let's build something together</h2>
+          <p>
+            Whether you have an open role, an exciting project collaboration, or just want to discuss tech, my inbox is always open.
+          </p>
+          
+          <div style="display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap;">
+            <a href="mailto:your.email@example.com" class="btn btn-primary">
+              <svg width="18" height="18" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+              Say Hello
+            </a>
+            <a href="https://linkedin.com/in/yourusername" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">
+              Connect on LinkedIn
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container footer-content">
+      <p>&copy; <span id="currentYear"></span> Theodore Valentinus Bachri. Built and hosted with GitHub Pages.</p>
+    </div>
+  </footer>
+
+  <script>
+    // Set dynamic current year in footer
+    document.getElementById('currentYear').textContent = new Date().getFullYear();
+
+    // Mobile nav toggle functionality
+    const navToggle = document.getElementById('navToggle');
+    const navMenu = document.getElementById('navMenu');
+    const navItems = document.querySelectorAll('.nav-item');
+
+    if (navToggle && navMenu) {
+      navToggle.addEventListener('click', () => {
+        navMenu.classList.toggle('active');
+      });
+
+      // Close menu when clicking on any nav link
+      navItems.forEach(item => {
+        item.addEventListener('click', () => {
+          navMenu.classList.remove('active');
+        });
+      });
+    }
+  </script>
+</body>
+</html>
