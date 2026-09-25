@@ -25,6 +25,8 @@
       --accent: #38bdf8;
       --accent-glow: rgba(56, 189, 248, 0.15);
       --accent-emerald: #34d399;
+      --accent-red: #f00101;
+      --accent-orange: #fa9a01;
       --font-mono: 'JetBrains Mono', monospace;
     }
 
@@ -408,6 +410,15 @@
       background: rgba(52, 211, 153, 0.04);
     }
 
+    .detail-item.high-severity {
+      border-left-color: var(--accent-red);
+      background: rgba(250, 1, 1, 0.04);
+    }
+    .detail-item.medium-severity {
+      border-left-color: var(--accent-orange);
+      background: rgba(250, 154, 1, 0.04);
+    }
+
     .detail-label {
       font-size: 0.75rem;
       font-weight: 600;
@@ -418,6 +429,12 @@
 
     .detail-item.impact .detail-label {
       color: var(--accent-emerald);
+    }
+    .detail-item.high-severity .detail-label {
+      color: var(--accent-red);
+    }
+    .detail-item.medium-severity .detail-label {
+      color: var(--accent-orange);
     }
 
     .detail-text {
@@ -659,7 +676,6 @@
         <div class="section-header">
           <span class="section-tag">Capabilities</span>
           <h2 class="section-title">Core Competencies & Tools</h2>
-          <p class="section-subtitle">Categorized breakdown of technical proficiencies and hands-on toolsets.</p>
         </div>
 
         <div class="skills-grid">
@@ -705,9 +721,11 @@
             </h3>
             <div class="skill-tags">
               <span class="skill-chip">Zabbix</span>
-              <span class="skill-chip">Honeypot (Cowrie & Dionaea)</span>
+              <span class="skill-chip">Honeypot</span>
+              <span class="skill-chip">Cowrie</span>
+              <span class="skill-chip">Dionaea</span>
               <span class="skill-chip">Linux (Ubuntu)</span>
-              <span class="skill-chip">OS Troubleshooting & Analysis</span>
+              <span class="skill-chip">Linux Troubleshooting & Analysis</span>
             </div>
           </div>
         </div>
@@ -748,6 +766,7 @@
 
               <div class="project-stack">
                 <span class="skill-chip">Kali Linux</span>
+                <span class="skill-chip">Nmap</span>
                 <span class="skill-chip">Web Exploitation</span>
                 <span class="skill-chip">Bash</span>
               </div>
@@ -786,6 +805,7 @@
 
               <div class="project-stack">
                 <span class="skill-chip">Kali Linux</span>
+                <span class="skill-chip">Nmap</span>
                 <span class="skill-chip">Web Exploitation</span>
                 <span class="skill-chip">Bash</span>
               </div>
@@ -832,6 +852,39 @@
               <a href="https://github.com/thThe-spec/zabbix-agent-install" target="_blank" rel="noopener noreferrer" class="link-action">
                 View Script &rarr;
               </a>
+            </div>
+          </article>
+
+          <!-- Project 4 -->
+          <article class="project-card">
+            <div>
+              <span class="project-type">Mobile Penetration Testing</span>
+              <h3 class="project-title">Play Store App Penetration Testing</h3>
+              
+              <div class="project-details">
+                <h4>Role: Penetration Tester (Team of 4)</h4>
+                <p style="font-size: 13px;">Assisted in conducting comprehensive penetration testing on an android application from Google Play Store, identifying and exploiting various security vulnerabilities.</p>
+
+                <div class="detail-item high-severity">
+                  <span class="detail-label">High Severity</span>
+                  <p class="detail-text">Identified a Client-Side Security Control Bypass vulnerability that allowed for unauthorized data access.</p>
+                </div>
+                <div class="detail-item medium-severity">
+                  <span class="detail-label">Medium Severity</span>
+                  <p class="detail-text">Discovered a Security Control Bypass vulnerability that allowed for identity spoofing.</p>
+                </div>
+                <div class="detail-item medium-severity">
+                  <span class="detail-label">Medium Severity</span>
+                  <p class="detail-text">Found an unrestricted Google Maps API Key that could be abused for excessive API calls.</p>
+                </div>
+              </div>
+
+              <div class="project-stack">
+                <span class="skill-chip">APK Decompiling & Analysis</span>
+                <span class="skill-chip">Mobile App Exploitation</span>
+                <span class="skill-chip">Java</span>
+                <span class="skill-chip">Burp Suite</span>
+              </div>
             </div>
           </article>
         </div>
